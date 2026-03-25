@@ -2,7 +2,7 @@ import os
 
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "troque-esta-chave")
-    APP_PASSWORD = os.getenv("APP_PASSWORD", "123456")
+    APP_PASSWORD = os.getenv("APP_PASSWORD", "leviémelhor")
     
     SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.office365.com")
     SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
