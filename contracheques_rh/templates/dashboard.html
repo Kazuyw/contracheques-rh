@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel RH</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="topo">
+      <div>
+        <h1>Colégio Interativo</h1>
+        <p>Uso interno do RH • Desenvolvedor: Igor Levi</p>
+      </div>
+      <a class="sair" href="{{ url_for('logout') }}">Sair</a>
+    </div>
+
+    <div class="card">
+      <h2>Enviar arquivos</h2>
+      <form method="post" enctype="multipart/form-data">
+        <label>Planilha Excel (.xlsx)</label>
+        <input type="file" name="planilha" accept=".xlsx" required>
+
+        <label>PDFs dos contracheques</label>
+        <input type="file" name="pdfs" accept=".pdf" multiple required>
+
+        <button type="submit">Validar arquivos</button>
+      </form>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for categoria, mensagem in messages %}
+        <div class="alert {{ categoria }}">{{ mensagem }}</div>
+      {% endfor %}
+    {% endwith %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - RH</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container small">
+    <h1>Colégio Interativo</h1>
+    <h2>Sistema de Envio de Contracheques</h2>
+    <form method="post">
+      <label>Senha</label>
+      <input type="password" name="senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for categoria, mensagem in messages %}
+        <div class="alert {{ categoria }}">{{ mensagem }}</div>
+      {% endfor %}
+    {% endwith %}
+  </div>
+</body>
+</html>

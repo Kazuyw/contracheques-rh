@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado da Validação</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Resultado da validação</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Linha</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>PDF</th>
+          <th>Status</th>
+          <th>Erros</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in resultados %}
+        <tr>
+          <td>{{ item.linha }}</td>
+          <td>{{ item.nome }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.pdf_nome }}</td>
+          <td>{{ item.status_validacao }}</td>
+          <td>
+            {% if item.erros %}
+              {{ item.erros | join(' | ') }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <form method="post" action="{{ url_for('enviar') }}">
+      <button type="submit">Enviar contracheques</button>
+    </form>
+
+    <a class="voltar" href="{{ url_for('dashboard') }}">Voltar</a>
+  </div>
+</body>
+</html>
