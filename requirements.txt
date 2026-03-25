@@ -1,0 +1,8 @@
+Flask
+openpyxl
+email-validator
+python-dotenv
+waitress
+google-auth
+google-auth-oauthlib
+google-api-python-client
